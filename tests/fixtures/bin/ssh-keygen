@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ "${1:-}" == "-F" && -n "${3:-}" ]]; then
+  host="$2"
+  if [[ -n "${SSH_KEYGEN_MOCK_FOUND:-}" && "$host" == "$SSH_KEYGEN_MOCK_FOUND" ]]; then
+    exit 0
+  fi
+  exit 1
+fi
+
+exit 0

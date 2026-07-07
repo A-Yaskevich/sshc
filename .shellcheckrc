@@ -1,0 +1,8 @@
+# Sourced config files define variables used indirectly.
+external-sources=true
+
+# Template and color variables are intentionally exported for fzf/jq.
+disable=SC2034
+
+# BATS helpers use dynamic variables.
+disable=SC2030,SC2031

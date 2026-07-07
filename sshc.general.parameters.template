@@ -1,0 +1,12 @@
+# sshc general parameters (sourced by sshc.sh)
+
+# true = dark theme (.sshc.colors.dark); false = light theme (.sshc.colors.light)
+DARK_MODE=false
+
+CONNECTIONS_FILE="$HOME/.sshc/connections.json"
+ENCRYPTION_KEY_FILE="$HOME/.sshc/key"
+KNOWN_HOSTS_FILE="$HOME/.ssh/known_hosts"
+
+PREVIEW_NETWORK_CHECK_TIMEOUT=4
+PREVIEW_KEY_CHECK_TIMEOUT=4
+PREVIEW_DEBOUNCE_SECS=0.2

@@ -1,0 +1,11 @@
+# sshc dark color scheme (sourced by sshc.sh when DARK_MODE=true)
+
+# Local terminal background tint while connected (OSC 11; empty to disable).
+REMOTE_BG_COLOR="#1a1010"
+
+COLOR_GREEN=$'\033[32m'
+COLOR_YELLOW=$'\033[33m'
+COLOR_RED=$'\033[31m'
+COLOR_DIM=$'\033[2m\033[90m'
+COLOR_TAG=$'\033[1;96m'
+COLOR_RESET=$'\033[0m'

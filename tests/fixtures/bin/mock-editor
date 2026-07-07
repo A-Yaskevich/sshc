@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+target="${1:?editor requires a file argument}"
+printf '%s\n' "${EDITOR_OUTPUT:?EDITOR_OUTPUT is not set}" >"$target"
+exit 0

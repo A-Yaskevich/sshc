@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ -n "${SSH_MOCK_LOG:-}" ]]; then
+  printf '%s\n' "$*" >>"$SSH_MOCK_LOG"
+fi
+
+exit "${SSH_MOCK_EXIT:-0}"

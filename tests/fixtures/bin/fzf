@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ -n "${FZF_MOCK_LOG:-}" ]]; then
+  printf '%s\n' "$*" >>"$FZF_MOCK_LOG"
+fi
+
+if [[ -n "${FZF_MOCK_COUNT_FILE:-}" ]]; then
+  n=0
+  [[ -f "$FZF_MOCK_COUNT_FILE" ]] && n=$(cat "$FZF_MOCK_COUNT_FILE")
+  n=$((n + 1))
+  printf '%s' "$n" >"$FZF_MOCK_COUNT_FILE"
+  var="FZF_MOCK_OUTPUT_${n}"
+  exit_var="FZF_MOCK_EXIT_${n}"
+  if [[ -n "${!var:-}" ]]; then
+    printf '%s' "${!var}"
+    exit "${!exit_var:-0}"
+  fi
+  exit 1
+fi
+
+if [[ -n "${FZF_MOCK_OUTPUT:-}" ]]; then
+  printf '%s' "$FZF_MOCK_OUTPUT"
+  exit "${FZF_MOCK_EXIT:-0}"
+fi
+
+if printf '%s\n' "$*" | grep -q -- '--filter'; then
+  cat
+  exit 0
+fi
+
+exit "${FZF_MOCK_EXIT:-1}"

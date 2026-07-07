@@ -1,0 +1,31 @@
+{
+  "connections": [
+    {
+      "name": "alpha",
+      "host": "alpha.example.com",
+      "user": "alice",
+      "port": 22,
+      "password": "",
+      "post_cmd": "",
+      "tags_string": "#dev"
+    },
+    {
+      "name": "beta",
+      "host": "beta.example.com",
+      "user": "",
+      "port": 2222,
+      "password": "",
+      "post_cmd": "cd /var/log",
+      "tags_string": "#prod #web"
+    },
+    {
+      "name": "",
+      "host": "gamma.example.com",
+      "user": "bob",
+      "port": 22,
+      "password": "",
+      "post_cmd": "",
+      "tags_string": ""
+    }
+  ]
+}
