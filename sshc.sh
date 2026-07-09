@@ -409,6 +409,11 @@ connection_prepare_for_storage() {
   jq -c --arg pw "$encrypted" '.password = $pw' <<<"$json"
 }
 
+editor_tty_available() {
+  [[ -r /dev/tty && -w /dev/tty ]] || return 1
+  : </dev/tty >/dev/tty 2>/dev/tty
+}
+
 edit_json_in_vi() {
   local initial="$1"
   local tmp editor result
@@ -420,8 +425,8 @@ edit_json_in_vi() {
   }
 
   editor="${VISUAL:-${EDITOR:-vi}}"
-  if [[ -t 0 && -t 1 ]] && [[ -r /dev/tty && -w /dev/tty ]]; then
-    if ! "$editor" "$tmp" </dev/tty >/dev/tty; then
+  if [[ ! -t 1 ]] && editor_tty_available; then
+    if ! "$editor" "$tmp" </dev/tty >/dev/tty 2>/dev/tty; then
       rm -f "$tmp"
       return 1
     fi
